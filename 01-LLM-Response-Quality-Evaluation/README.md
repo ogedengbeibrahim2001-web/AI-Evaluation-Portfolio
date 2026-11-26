@@ -8,6 +8,6 @@ Comparative evaluation of **ChatGPT** and **Claude** across 20 prompts (`Q01`–
 * **Ties:** `11` prompts (`Q01`–`Q04`, `Q07`, `Q09`, `Q12`, `Q17`–`Q20`)
 
 ## Files in This Folder
-* `evaluation-dataset.csv` — Prompt suite (`Q01`–`Q20`) and categories
+* `data/evaluation-dataset.csv` — Prompt suite (`Q01`–`Q20`) and categories
 * `evaluation-rubric.md` — Scoring definitions and scale criteria
 * `data/evaluation-results.csv` — Per-criterion scores, totals (`Q01`–`Q20`), winners, and evaluator notes
