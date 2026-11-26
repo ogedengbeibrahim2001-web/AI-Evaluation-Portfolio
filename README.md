@@ -36,5 +36,5 @@ This benchmark compares **ChatGPT** and **Claude** across a 20-prompt evaluation
 
 ### Repository Artifacts
 * **Results Dataset:** `01-LLM-Response-Quality-Evaluation/data/evaluation-results.csv`
-* **Prompt Dataset:** `01-LLM-Response-Quality-Evaluation/evaluation-dataset.csv`
+* **Prompt Dataset:** `01-LLM-Response-Quality-Evaluation/data/evaluation-dataset.csv`
 * **Scoring Rubric:** `01-LLM-Response-Quality-Evaluation/evaluation-rubric.md`
