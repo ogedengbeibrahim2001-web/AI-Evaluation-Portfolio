@@ -1,40 +1,24 @@
-# AI-Evaluation-Portfolio
-Benchmarking, hallucination testing, prompt engineering, and automated evaluation workflows for LLMs.
----
+# AI Evaluation Portfolio
 
-## Project 01: LLM Response Quality Evaluation (`Q01`–`Q20`)
+A structured portfolio showcasing practical large language model (LLM) evaluation, rubric-based quality assessment, hallucination and factual-accuracy auditing, and data/logic verification.
 
-### Executive Summary
-This benchmark compares **ChatGPT** and **Claude** across a 20-prompt evaluation suite (`Q01`–`Q20`) spanning general knowledge, conceptual synthesis, arithmetic and logic, data interpretation, constraint adherence, ambiguity handling, false-premise correction, grounded summarization/extraction, and structured output generation (`JSON` and Markdown tables). Each response was scored on a **1–5 scale** across five rubric dimensions—**Accuracy**, **Relevance**, **Completeness**, **Instruction Following**, and **Clarity**—for a maximum of **25 points per prompt** (**500 points total**).
+## Core Focus Areas
+- **LLM Response Quality Evaluation:** Multi-criteria scoring across accuracy, relevance, completeness, instruction following, and clarity.
+- **Hallucination & Factual Accuracy Auditing:** Adversarial and constraint-driven testing across fabricated events/citations/statistics, false premises, obscure facts, uncertainty calibration, and arithmetic/count anomalies.
+- **Data & Statistical Validation:** Checking numerical consistency, denominator assumptions, and ground-truth alignment in evaluation datasets.
 
-* **Claude** finished first overall at **491 / 500 (98.2%)**, leading by **+8 points** across the full benchmark.
-* **ChatGPT** finished second at **483 / 500 (96.6%)**, holding the lead through the first ten prompts (`246` vs. `242`) before Claude pulled ahead in the second half.
-* Across all 20 items, **Claude** won **7** prompts (`Q08`, `Q10`, `Q11`, `Q13`, `Q14`, `Q15`, `Q16`), **ChatGPT** won **2** prompts (`Q05`, `Q06`), and **11** prompts ended in ties (`Q01`–`Q04`, `Q07`, `Q09`, `Q12`, `Q17`–`Q20`).
+## Repository Structure
 
----
+| Folder | Status | Scope & Deliverables |
+| :--- | :---: | :--- |
+| `01-LLM-Response-Quality-Evaluation/` | Completed | Comparative benchmarking of ChatGPT and Claude across 20 questions in 10 categories using a 5-criterion rubric (`accuracy`, `relevance`, `completeness`, `instruction following`, `clarity`), structured datasets, and summary documentation. |
+| `02-Hallucination-Factual-Accuracy/` | Completed | 10 adversarial/factual prompts (`H01`–`H10`) evaluated across ChatGPT and Claude (20 evaluation rows total), including `test-cases.csv`, `results.csv`, and `README.md`. |
 
-### Final Scoreboard by Batch
+## Planned Roadmap
+- **Prompt Engineering Evaluation (`03-Prompt-Evaluation`):** Systematic comparison of prompt variations, constraints, and edge-case behavior.
+- **Automated Evaluation & Spreadsheet Auditing:** Repeatable evaluation workflows and Excel/spreadsheet data-validation checks aligned with quantitative and statistical workflows.
 
-| Batch | Prompts | Focus Area | ChatGPT | Claude | Batch Winner |
-| :--- | :---: | :--- | :---: | :---: | :--- |
-| **Batch 1** | `Q01`–`Q05` | General Knowledge, Synthesis & Math | `124 / 125` (`99.2%`) | `121 / 125` (`96.8%`) | **ChatGPT (+3)** |
-| **Batch 2** | `Q06`–`Q10` | Math, Data Interpretation & Logic | `122 / 125` (`97.6%`) | `121 / 125` (`96.8%`) | **ChatGPT (+1)** |
-| **Batch 3** | `Q11`–`Q15` | Constraints, Ambiguity & False Premise | `113 / 125` (`90.4%`) | `124 / 125` (`99.2%`) | **Claude (+11)** |
-| **Batch 4** | `Q16`–`Q20` | False Premise, Grounding & Structured Output | `124 / 125` (`99.2%`) | `125 / 125` (`100.0%`) | **Claude (+1)** |
-| **Overall** | **`Q01`–`Q20`** | **Full 20-Prompt Evaluation** | **`483 / 500` (`96.6%`)** | **`491 / 500` (`98.2%`)** | **Claude (+8 pts)** |
-
----
-
-### Key Findings & Failure Modes
-
-* **Early-Commitment Arithmetic vs. Step-by-Step Verification (`Q05`–`Q06`):** ChatGPT earned `25/25` on both math prompts by working through intermediate calculations methodically, whereas Claude scored `22/25` on each after committing prematurely to an initial value before completing the full calculation.
-* **Strict Constraint Adherence (`Q11`–`Q12`):** Claude handled tight multi-constraint formatting cleanly on `Q11` (`25/25`), whereas ChatGPT dropped to `17/25` by exceeding the 5-word description cap and over-applying the negative letter constraint into description text. On `Q12`, ChatGPT preserved the exact closing string (`End of brief.`) while Claude omitted the final period (`24/25` each).
-* **Nuance, Ambiguity & False-Premise Correction (`Q08`, `Q10`, `Q13`–`Q16`):** Claude consistently earned `25/25` across these items by surfacing missing context, adding practical caveats and methodological detail, and correcting false premises clearly while maintaining accuracy.
-* **Grounded Tasks & Structured Outputs (`Q17`–`Q20`):** Both models achieved `25/25` across grounded summarization/extraction (`Q17`–`Q18`) and schema/table formatting (`Q19`–`Q20`), demonstrating strong reliability when output rules are explicit and self-contained.
-
----
-
-### Repository Artifacts
-* **Results Dataset:** `01-LLM-Response-Quality-Evaluation/data/evaluation-results.csv`
-* **Prompt Dataset:** `01-LLM-Response-Quality-Evaluation/data/evaluation-dataset.csv`
-* **Scoring Rubric:** `01-LLM-Response-Quality-Evaluation/evaluation-rubric.md`
+## Methodology Highlights
+- **Explicit Ground Truths & Rubrics:** Every test case pairs clear evaluation criteria or ground-truth checks with per-response notes rather than relying on vague impressions.
+- **Separation of Hallucination vs. Uncertainty:** Distinguishes outright fabrication from appropriate hedging, premise pushback, or explicit statements of missing/ambiguous data.
+- **Reproducible Tabular Artifacts:** Stores test cases and evaluation outputs in clean CSV files alongside project-level `README.md` summaries.
