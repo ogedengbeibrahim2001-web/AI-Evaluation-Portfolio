@@ -1,0 +1,11 @@
+test_id,stage_or_path,actual_outcome,pass_fail,severity,finding_summary,remediation_recommendation
+WF-01,Path 1 - Event A,Continue,PASS,Low,Event field matches target string and continues cleanly,Keep exact match or document case sensitivity in spec
+WF-02,Path 1 - Event A,Stop / Fallback,PASS,Medium,Case difference blocks Path 1 as configured by exact-match rule,Normalize event text casing in Formatter if case-insensitive matching is desired
+WF-03,Path 1 - Event A,Stop / Fallback,PASS,Low,Trailing space prevents exact string match,Trim leading/trailing spaces in Formatter step prior to path evaluation
+WF-04,Path 2 - Event B,Defective Rule,FAIL,High,Condition checks 1. EMAIL ADDRESS instead of event selection field,Update condition source field from 1. EMAIL ADDRESS to event field
+WF-05,Path 2 - Event B,Stop / Fallback,PASS,High,Email value fails event match as expected under current broken mapping,Fix field mapping to event field and retest with Event B sample
+WF-06,Path 3 - Master Class,Defective Rule,FAIL,High,Condition checks 1. EMAIL ADDRESS instead of event selection field,Update condition source field from 1. EMAIL ADDRESS to event field
+WF-07,Path 3 - Master Class,Stop / Fallback,PASS,Medium,Wrong source field and casing mismatch prevent intended branch match,Align condition field and standardize event label casing across form and rule
+WF-08,Path 4 - Fallback,Continue,PASS,Low,Fallback catches unmatched event value cleanly,Confirm Fallback email template handles generic/unmatched cases safely
+WF-09,Upstream - Name & Logging,Pending Audit,PENDING,Medium,Verify Formatter text/name rules and spreadsheet row fields,Inspect Formatter & Sheets configuration and record observed output
+WF-10,Upstream - Missing Field,Pending Audit,PENDING,Medium,Verify behavior when optional or required fields are blank,Test blank/missing input behavior and document expected fallback handling
