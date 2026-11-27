@@ -1,0 +1,11 @@
+check_id,target_area,actual_outcome,pass_fail,severity,finding_summary,remediation_recommendation
+DV-01,Summary Score Cell,Hardcoded value detected instead of formula,FAIL,High,Summary cell contains a static number that will not update when rows change,Replace static value with an AVERAGE/AGGREGATE formula over the score column
+DV-02,Pass Rate Formula,#DIV/0! error surfaced when count is zero,FAIL,High,Ratio formula lacks zero/empty guard on denominator,Wrap denominator check in IF condition or IFERROR with explicit fallback behavior
+DV-03,Lookup / Range Reference,#REF! error observed in downstream summary cell,FAIL,High,Broken cell/range reference left behind after column/row adjustment,Restore valid range reference and audit dependent formulas across tabs
+DV-04,Category Label Column,Trailing space present on sample label,FAIL,Medium,Leading/trailing whitespace causes inconsistent grouping and exact-match misses,Apply TRIM normalization on intake/cleaning step and enforce allowed list
+DV-05,Status Tag Column,Lowercase variant present alongside title/upper case,FAIL,Medium,Casing mismatch splits identical statuses into separate groups,Normalize text casing (e.g. PROPER/LOWER/UPPER standard) and apply data validation
+DV-06,Record ID Column,Duplicate ID found in test fixture,FAIL,High,Duplicate IDs risk overwriting or misaligning evaluation rows during lookups,Enforce unique ID generation and run uniqueness check before export
+DV-07,Record ID Column,Blank ID cell detected on active row,FAIL,High,Row lacks an identifier needed for traceability across test and result tables,Require non-blank ID before row is marked ready for audit
+DV-08,Status Breakdown Counts,Sub-counts do not match total row count,FAIL,Medium,Status counts undercount total rows by one record,Reconcile status tallies against total row count and verify filter states
+DV-09,Reviewer Notes Column,Blank note on flagged/failed record,FAIL,Medium,Missing audit note leaves defect root cause undocumented,Require non-empty notes on FAIL/defect rows prior to completion
+DV-10,Numeric Score Column,Out-of-range score flagged by rule,PASS,Low,Boundary check successfully caught score outside expected 1-5 scale,Keep data-validation rule active and document allowed rubric range
