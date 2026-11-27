@@ -1,0 +1,11 @@
+test_id,stage_or_path,field_checked,operator,expected_value,sample_input_value,expected_outcome,validation_rule
+WF-01,Path 1 - Event A,1. EVENT,(Text) Exactly matches,Event A,Event A,Continue,Exact string and case match on event field routes to Path 1
+WF-02,Path 1 - Event A,1. EVENT,(Text) Exactly matches,Event A,event a,Stop / Fallback,Lowercase variant fails exact match and should not enter Path 1
+WF-03,Path 1 - Event A,1. EVENT,(Text) Exactly matches,Event A,Event A ,Stop / Fallback,Trailing whitespace fails exact match unless trimmed upstream
+WF-04,Path 2 - Event B,1. EMAIL ADDRESS,(Text) Exactly matches,Event B,Event B,Defective Rule,Flags field mapping mismatch: event label checked against email field
+WF-05,Path 2 - Event B,1. EMAIL ADDRESS,(Text) Exactly matches,Event B,attendee02@example.com,Stop / Fallback,Standard email input does not match event string rule
+WF-06,Path 3 - Master Class,1. EMAIL ADDRESS,(Text) Exactly matches,Workshop Master Class,Workshop Master Class,Defective Rule,Flags field mapping mismatch: event label checked against email field
+WF-07,Path 3 - Master Class,1. EMAIL ADDRESS,(Text) Exactly matches,Workshop Master Class,workshop master class,Stop / Fallback,Flags both wrong source field and capitalization mismatch
+WF-08,Path 4 - Fallback,Unmatched Prior Paths,Fallback,Any unmatched submission,Unlisted Event Track,Continue,Fallback branch captures unmatched or unexpected event values
+WF-09,Upstream - Name & Logging,Name & Sheet Row,Formatting + Row Log,Normalized name + logged row,  alex taylor  ,Row Logged,Whitespace/casing normalization and spreadsheet logging behave consistently
+WF-10,Upstream - Missing Field,Required Event / Email,Presence Check,Non-empty required fields,,Blocked / Fallback,Missing event or contact value is caught without breaking downstream steps
