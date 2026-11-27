@@ -1,0 +1,11 @@
+check_id,target_area,validation_category,check_rule,expected_value,sample_input_value,expected_outcome,validation_rule
+DV-01,Summary Score Cell,Formula Integrity,Dynamic average formula over score column,Dynamic AVERAGE formula,Hardcoded 4.25,Flag Defect,Summary metric should use a dynamic formula rather than a hardcoded number so row edits update totals
+DV-02,Pass Rate Formula,Formula / Error Handling,Safe division when denominator is zero or blank,0.0% or blank-safe output,#DIV/0!,Flag Defect,Division formula must guard against zero or empty denominators instead of exposing #DIV/0!
+DV-03,Lookup / Range Reference,Formula / Reference Integrity,Valid referenced range with no broken links,Valid range reference,#REF!,Flag Defect,Formulas must not reference deleted or shifted ranges producing #REF!
+DV-04,Category Label Column,Label / Formatting Hygiene,Trimmed canonical label with consistent casing,High,High ,Flag Defect,Trailing whitespace on category labels breaks exact-match filters and splits grouped counts
+DV-05,Status Tag Column,Label / Formatting Hygiene,Standardized casing across status values,Pass,pass,Flag Defect,Inconsistent capitalization across status labels fragments pivot/group summaries
+DV-06,Record ID Column,ID Uniqueness,Unique non-empty identifier per row,Unique ID (e.g. EVAL-04),EVAL-01 (duplicate),Flag Defect,Duplicate record IDs create ambiguity during joins, deduplication, and grading audits
+DV-07,Record ID Column,ID Completeness,Non-empty identifier on every data row,Non-empty ID,(blank),Flag Defect,Missing record IDs prevent reliable row tracking across sheets and exports
+DV-08,Status Breakdown Counts,Count Consistency,Sum of status counts equals total evaluated rows,Total = 10,Pass(6) + Fail(3) = 9 (1 missing),Flag Defect,Status breakdown counts must reconcile with total row count to avoid dropped or double-counted rows
+DV-09,Reviewer Notes Column,Input Completeness,Non-empty rationale on failed or edge-case rows,Non-empty audit note,(blank) on FAIL row,Flag Defect,Failed or flagged rows require a non-empty finding/remediation note before sign-off
+DV-10,Numeric Score Column,Boundary / Range Check,Score within valid rubric bounds (1 to 5),Value in [1, 5],6.5,Flag Defect,Out-of-range scores outside the rubric scale must be caught by validation rules
